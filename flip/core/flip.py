@@ -164,6 +164,7 @@ class Flip:
         """Get API key for a provider."""
         key_map = {
             "openai": self.config.openai_api_key or os.getenv("OPENAI_API_KEY"),
+            "azure-openai": self.config.azure_openai_api_key or os.getenv("AZURE_OPENAI_API_KEY"),
             "anthropic": self.config.anthropic_api_key or os.getenv("ANTHROPIC_API_KEY"),
             "google": self.config.google_api_key or os.getenv("GOOGLE_API_KEY"),
             "huggingface": self.config.huggingface_api_key or os.getenv("HUGGINGFACE_API_KEY"),

@@ -3,6 +3,7 @@
 from typing import Optional
 from flip.generation.base import BaseLLM
 from flip.generation.openai import OpenAILLM
+from flip.generation.azure_openai import AzureOpenAILLM
 from flip.generation.anthropic import AnthropicLLM
 from flip.generation.gemini import GeminiLLM
 from flip.generation.huggingface import HuggingFaceLLM
@@ -15,6 +16,7 @@ class LLMFactory:
     
     _providers = {
         "openai": OpenAILLM,
+        "azure-openai": AzureOpenAILLM,
         "anthropic": AnthropicLLM,
         "google": GeminiLLM,
         "huggingface": HuggingFaceLLM,

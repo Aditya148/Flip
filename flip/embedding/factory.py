@@ -3,6 +3,7 @@
 from typing import Optional
 from flip.embedding.base import BaseEmbedder
 from flip.embedding.openai import OpenAIEmbedder
+from flip.embedding.azure_openai import AzureOpenAIEmbedder
 from flip.embedding.google import GoogleEmbedder
 from flip.embedding.sentence_transformers import SentenceTransformerEmbedder
 from flip.embedding.huggingface import HuggingFaceEmbedder
@@ -14,6 +15,7 @@ class EmbedderFactory:
     
     _providers = {
         "openai": OpenAIEmbedder,
+        "azure-openai": AzureOpenAIEmbedder,
         "google": GoogleEmbedder,
         "sentence-transformers": SentenceTransformerEmbedder,
         "huggingface": HuggingFaceEmbedder,

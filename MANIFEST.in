@@ -1,0 +1,32 @@
+# Flip RAG SDK
+
+include README.md
+include LICENSE
+include QUICKSTART.md
+include ADVANCED_FEATURES.md
+include EMBEDDINGGEMMA_GUIDE.md
+include LOGGING_DEBUG_GUIDE.md
+include INSTALL.md
+include requirements.txt
+include requirements-dev.txt
+include requirements-optional.txt
+
+recursive-include flip *.py
+recursive-include examples *.py
+recursive-include examples *.md
+
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude .DS_Store
+global-exclude *.swp
+global-exclude flip/.venv
+global-exclude __pycache__/*
+global-exclude *.py[cod]
+global-exclude *.pyo
+global-exclude .git*
+global-exclude .env
+global-exclude *.egg-info
+global-exclude dist
+global-exclude .tox
+global-exclude .pytest_cache
+global-exclude .mypy_cache

@@ -10,7 +10,7 @@ class FlipConfig(BaseModel):
     
     # LLM Configuration
     llm_provider: Literal[
-        "openai", "anthropic", "google", "huggingface", "meta", "ollama"
+        "openai", "azure-openai", "anthropic", "google", "huggingface", "meta", "ollama"
     ] = Field(default="openai", description="LLM provider to use")
     
     llm_model: Optional[str] = Field(
@@ -33,7 +33,7 @@ class FlipConfig(BaseModel):
     
     # Embedding Configuration
     embedding_provider: Literal[
-        "openai", "huggingface", "sentence-transformers", "google"
+        "openai", "azure-openai", "huggingface", "sentence-transformers", "google"
     ] = Field(default="openai", description="Embedding provider to use")
     
     embedding_model: Optional[str] = Field(
@@ -115,6 +115,9 @@ class FlipConfig(BaseModel):
     
     # API Keys (optional, can also use environment variables)
     openai_api_key: Optional[str] = Field(default=None, description="OpenAI API key")
+    azure_openai_api_key: Optional[str] = Field(default=None, description="Azure OpenAI API key")
+    azure_openai_endpoint: Optional[str] = Field(default=None, description="Azure OpenAI endpoint")
+    azure_openai_api_version: str = Field(default="2024-02-15-preview", description="Azure OpenAI API version")
     anthropic_api_key: Optional[str] = Field(default=None, description="Anthropic API key")
     google_api_key: Optional[str] = Field(default=None, description="Google API key")
     huggingface_api_key: Optional[str] = Field(default=None, description="HuggingFace API key")
@@ -143,6 +146,7 @@ class FlipConfig(BaseModel):
         """Get default model for the selected LLM provider."""
         defaults = {
             "openai": "gpt-4-turbo-preview",
+            "azure-openai": "gpt-4",
             "anthropic": "claude-3-sonnet-20240229",
             "google": "gemini-pro",
             "huggingface": "meta-llama/Llama-2-70b-chat-hf",
@@ -155,6 +159,7 @@ class FlipConfig(BaseModel):
         """Get default embedding model for the selected provider."""
         defaults = {
             "openai": "text-embedding-3-small",
+            "azure-openai": "text-embedding-ada-002",
             "huggingface": "sentence-transformers/all-MiniLM-L6-v2",
             "sentence-transformers": "all-MiniLM-L6-v2",
             "google": "models/embedding-001",
