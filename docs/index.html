@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Flip RAG SDK - Fully Automated Retrieval-Augmented Generation. The simplest yet most powerful RAG SDK.">
+    <meta name="description"
+        content="Flip RAG SDK - Fully Automated Retrieval-Augmented Generation. The simplest yet most powerful RAG SDK.">
     <title>Flip SDK - Documentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -27,7 +33,8 @@
                 <a href="#examples" class="nav-link">Examples</a>
                 <a href="https://github.com/Aditya148/Flip" class="nav-link github-link" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
                     GitHub
                 </a>
@@ -90,7 +97,8 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#quick-start" class="btn btn-primary">Get Started</a>
-                    <a href="https://github.com/Aditya148/Flip" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                    <a href="https://github.com/Aditya148/Flip" class="btn btn-secondary" target="_blank">View on
+                        GitHub</a>
                 </div>
                 <div class="hero-code">
                     <pre><code class="language-python">from flip import Flip
@@ -110,7 +118,7 @@ print(response.answer)</code></pre>
         <section id="quick-start" class="section">
             <div class="container">
                 <h2 class="section-title">🚀 Quick Start</h2>
-                
+
                 <div id="installation" class="subsection">
                     <h3>Installation</h3>
                     <p>Install Flip SDK using pip:</p>
@@ -149,7 +157,8 @@ print(response.citations)</code></pre>
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
                         <h3>Ultra-Simple API</h3>
-                        <p>Just <code>Flip(directory="./docs")</code> to get started. No complex configuration needed.</p>
+                        <p>Just <code>Flip(directory="./docs")</code> to get started. No complex configuration needed.
+                        </p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🔄</div>
@@ -195,7 +204,7 @@ print(response.citations)</code></pre>
             <div class="container">
                 <h2 class="section-title">📚 Supported LLM Providers</h2>
                 <p class="section-description">Choose from multiple LLM providers with a simple parameter change:</p>
-                
+
                 <div class="provider-tabs">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="openai">OpenAI</button>
@@ -205,7 +214,7 @@ print(response.citations)</code></pre>
                         <button class="tab-btn" data-tab="huggingface">HuggingFace</button>
                         <button class="tab-btn" data-tab="ollama">Ollama</button>
                     </div>
-                    
+
                     <div class="tab-content active" data-tab="openai">
                         <div class="code-block">
                             <pre><code class="language-python"># Use OpenAI (default)
@@ -215,7 +224,7 @@ flip = Flip(directory="./docs", llm_provider="openai")
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="tab-content" data-tab="azure">
                         <div class="code-block">
                             <pre><code class="language-python">from flip import Flip, FlipConfig
@@ -233,7 +242,7 @@ flip = Flip(directory="./docs", config=config)</code></pre>
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="tab-content" data-tab="anthropic">
                         <div class="code-block">
                             <pre><code class="language-python"># Use Anthropic Claude
@@ -243,7 +252,7 @@ flip = Flip(directory="./docs", llm_provider="anthropic")
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="tab-content" data-tab="google">
                         <div class="code-block">
                             <pre><code class="language-python"># Use Google Gemini
@@ -253,7 +262,7 @@ flip = Flip(directory="./docs", llm_provider="google")
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="tab-content" data-tab="huggingface">
                         <div class="code-block">
                             <pre><code class="language-python"># Use HuggingFace models
@@ -263,7 +272,7 @@ flip = Flip(directory="./docs", llm_provider="huggingface")
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="tab-content" data-tab="ollama">
                         <div class="code-block">
                             <pre><code class="language-python"># Use local Ollama
@@ -281,11 +290,11 @@ flip = Flip(directory="./docs", llm_provider="ollama")
         <section id="api" class="section section-dark">
             <div class="container">
                 <h2 class="section-title">🔧 API Reference</h2>
-                
+
                 <div id="flip-class" class="api-section">
                     <h3>Flip Class</h3>
                     <p>The main SDK class for RAG operations.</p>
-                    
+
                     <div class="code-block">
                         <pre><code class="language-python">flip = Flip(
     directory: Optional[str] = None,
@@ -296,7 +305,7 @@ flip = Flip(directory="./docs", llm_provider="ollama")
 )</code></pre>
                         <button class="copy-btn">Copy</button>
                     </div>
-                    
+
                     <h4>Methods</h4>
                     <div class="method-list">
                         <div class="method-item">
@@ -337,7 +346,7 @@ flip = Flip(directory="./docs", llm_provider="ollama")
                 <div id="flip-response" class="api-section">
                     <h3>FlipResponse</h3>
                     <p>Response object returned by query operations.</p>
-                    
+
                     <div class="code-block">
                         <pre><code class="language-python">@dataclass
 class FlipResponse:
@@ -352,7 +361,7 @@ class FlipResponse:
                 <div id="flip-config" class="api-section">
                     <h3>FlipConfig</h3>
                     <p>Configuration object for customizing Flip behavior.</p>
-                    
+
                     <div class="code-block">
                         <pre><code class="language-python">from flip import FlipConfig
 
@@ -395,11 +404,12 @@ config = FlipConfig(
         <section id="advanced" class="section">
             <div class="container">
                 <h2 class="section-title">🚀 Advanced Features</h2>
-                
+
                 <div id="hybrid-search" class="subsection">
                     <h3>🔀 Hybrid Search</h3>
-                    <p>Combines vector similarity search with BM25 keyword search using reciprocal rank fusion for superior accuracy.</p>
-                    
+                    <p>Combines vector similarity search with BM25 keyword search using reciprocal rank fusion for
+                        superior accuracy.</p>
+
                     <div class="feature-details">
                         <h4>How It Works</h4>
                         <ul>
@@ -408,7 +418,7 @@ config = FlipConfig(
                             <li><strong>Fusion:</strong> Reciprocal Rank Fusion combines both results</li>
                         </ul>
                     </div>
-                    
+
                     <div class="code-block">
                         <pre><code class="language-python">from flip import Flip, FlipConfig
 
@@ -424,7 +434,7 @@ flip = Flip(directory="./docs", config=config)</code></pre>
                 <div id="reranking" class="subsection">
                     <h3>📊 Re-ranking</h3>
                     <p>Uses cross-encoder models to re-rank retrieved documents for improved relevance.</p>
-                    
+
                     <div class="code-block">
                         <pre><code class="language-python">config = FlipConfig(
     use_reranking=True,  # Enabled by default
@@ -439,7 +449,7 @@ flip = Flip(directory="./docs", config=config)</code></pre>
                 <div id="caching" class="subsection">
                     <h3>💾 Intelligent Caching</h3>
                     <p>LRU caching for embeddings and queries with disk persistence for faster repeated operations.</p>
-                    
+
                     <div class="feature-details">
                         <h4>Cache Types</h4>
                         <ul>
@@ -447,7 +457,7 @@ flip = Flip(directory="./docs", config=config)</code></pre>
                             <li><strong>Query Cache:</strong> Caches query results</li>
                         </ul>
                     </div>
-                    
+
                     <div class="code-block">
                         <pre><code class="language-python">config = FlipConfig(
     enable_cache=True,  # Enabled by default
@@ -468,7 +478,7 @@ flip.pipeline.clear_caches()</code></pre>
                 <div id="incremental" class="subsection">
                     <h3>🔄 Incremental Updates</h3>
                     <p>Efficiently track and update only changed documents instead of re-indexing everything.</p>
-                    
+
                     <div class="code-block">
                         <pre><code class="language-python">flip = Flip(directory="./docs")
 
@@ -488,7 +498,7 @@ print(f"Deleted: {stats['deleted']}")</code></pre>
         <section id="examples" class="section section-dark">
             <div class="container">
                 <h2 class="section-title">🌟 Examples</h2>
-                
+
                 <div class="example-grid">
                     <div class="example-card">
                         <h3>Simple Q&A</h3>
@@ -503,7 +513,7 @@ print(f"Sources: {len(response.citations)} documents")</code></pre>
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="example-card">
                         <h3>Multiple Providers</h3>
                         <div class="code-block">
@@ -518,7 +528,7 @@ for provider in providers:
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="example-card">
                         <h3>Advanced Configuration</h3>
                         <div class="code-block">
@@ -540,7 +550,7 @@ response = flip.query("What are the key features?")</code></pre>
                             <button class="copy-btn">Copy</button>
                         </div>
                     </div>
-                    
+
                     <div class="example-card">
                         <h3>Evaluation</h3>
                         <div class="code-block">
@@ -569,7 +579,7 @@ print(f"Overall Score: {result.overall_score:.3f}")</code></pre>
             <div class="container">
                 <h2 class="section-title">⚙️ Complete Configuration</h2>
                 <p class="section-description">All available configuration options:</p>
-                
+
                 <div class="config-table">
                     <table>
                         <thead>
@@ -702,8 +712,10 @@ print(f"Overall Score: {result.overall_score:.3f}")</code></pre>
                     <div class="footer-section">
                         <h4>Community</h4>
                         <ul>
-                            <li><a href="https://github.com/Aditya148/Flip/discussions" target="_blank">Discussions</a></li>
-                            <li><a href="https://github.com/Aditya148/Flip/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a></li>
+                            <li><a href="https://github.com/Aditya148/Flip/discussions" target="_blank">Discussions</a>
+                            </li>
+                            <li><a href="https://github.com/Aditya148/Flip/blob/master/CONTRIBUTING.md"
+                                    target="_blank">Contributing</a></li>
                         </ul>
                     </div>
                 </div>
@@ -719,4 +731,5 @@ print(f"Overall Score: {result.overall_score:.3f}")</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

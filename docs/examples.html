@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flip RAG SDK Examples - Practical code examples from basic to advanced usage.">
+    <title>Examples - Flip SDK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Flip SDK</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="installation.html" class="nav-link">Installation</a>
+                <a href="advanced.html" class="nav-link">Advanced</a>
+                <a href="examples.html" class="nav-link active">Examples</a>
+                <a href="troubleshooting.html" class="nav-link">Help</a>
+                <a href="https://github.com/Aditya148/Flip" class="nav-link github-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" style="margin-left: 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+            <!-- Page Header -->
+            <div class="hero-content" style="text-align: center; margin-bottom: 3rem;">
+                <h1 class="section-title" style="font-size: 3rem; margin-bottom: 1rem;">
+                    🌟 Examples
+                </h1>
+                <p class="section-description" style="font-size: 1.25rem; color: var(--text-secondary);">
+                    Practical code examples from basic to advanced usage
+                </p>
+            </div>
+
+            <!-- Basic Usage -->
+            <section class="section">
+                <h2 class="section-title">1. Basic Usage</h2>
+                <p>The simplest way to use Flip:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip
+
+# Initialize with a directory
+flip = Flip(directory="./sample_docs")
+
+# Query your documents
+response = flip.query("What is the main topic?")
+
+print(response.answer)
+print(f"Sources: {len(response.citations)} documents")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Advanced Configuration -->
+            <section class="section">
+                <h2 class="section-title">2. Advanced Configuration</h2>
+                <p>Custom configuration with multiple providers:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip, FlipConfig
+
+# Custom configuration
+config = FlipConfig(
+    llm_provider="openai",
+    llm_model="gpt-4-turbo-preview",
+    embedding_provider="openai",
+    chunking_strategy="semantic",
+    chunk_size=512,
+    retrieval_top_k=5,
+    use_hybrid_search=True,
+    use_reranking=True,
+    enable_cache=True
+)
+
+flip = Flip(directory="./docs", config=config)
+response = flip.query("What are the key features?")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Azure OpenAI -->
+            <section class="section">
+                <h2 class="section-title">3. Azure OpenAI</h2>
+                <p>Using Azure OpenAI for both LLM and embeddings:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip, FlipConfig
+
+config = FlipConfig(
+    llm_provider="azure-openai",
+    llm_model="gpt-4",  # Your deployment name
+    
+    embedding_provider="azure-openai",
+    embedding_model="text-embedding-ada-002",  # Your deployment name
+    
+    azure_openai_api_key="your-key",
+    azure_openai_endpoint="https://your-resource.openai.azure.com/",
+    
+    use_hybrid_search=True,
+    use_reranking=True
+)
+
+flip = Flip(directory="./docs", config=config)
+response = flip.query("What is AI?")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Multiple Providers -->
+            <section class="section">
+                <h2 class="section-title">4. Multiple Providers</h2>
+                <p>Try different providers and compare results:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip
+
+providers = ["openai", "anthropic", "google"]
+
+for provider in providers:
+    flip = Flip(directory="./docs", llm_provider=provider)
+    response = flip.query("Summarize the main points")
+    print(f"{provider}: {response.answer[:100]}...")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- EmbeddingGemma -->
+            <section class="section">
+                <h2 class="section-title">5. Using EmbeddingGemma</h2>
+                <p>Use Google's EmbeddingGemma model:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip, FlipConfig
+
+config = FlipConfig(
+    embedding_provider="huggingface",
+    embedding_model="google/embeddinggemma-300m",
+    llm_provider="openai",  # or any other provider
+    use_hybrid_search=True,
+    use_reranking=True
+)
+
+flip = Flip(directory="./docs", config=config)
+response = flip.query("What are the key points?")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Incremental Updates -->
+            <section class="section">
+                <h2 class="section-title">6. Incremental Updates</h2>
+                <p>Efficiently update your index with changed documents:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip
+
+# Initial indexing
+flip = Flip(directory="./docs")
+
+# Later, refresh with only changed documents
+stats = flip.refresh_index()
+
+print(f"Added: {stats['added']}")
+print(f"Updated: {stats['updated']}")
+print(f"Deleted: {stats['deleted']}")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Evaluation -->
+            <section class="section">
+                <h2 class="section-title">7. Evaluation</h2>
+                <p>Evaluate RAG performance with metrics:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip
+
+flip = Flip(directory="./docs")
+
+# Evaluate a query
+result = flip.evaluate(
+    query="What is AI?",
+    relevant_doc_ids=["chunk_1", "chunk_2"],  # Ground truth
+    k=5
+)
+
+print(f"Precision: {result.retrieval_precision:.3f}")
+print(f"Recall: {result.retrieval_recall:.3f}")
+print(f"F1 Score: {result.retrieval_f1:.3f}")
+print(f"Overall Score: {result.overall_score:.3f}")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Logging and Debugging -->
+            <section class="section">
+                <h2 class="section-title">8. Logging and Debugging</h2>
+                <p>Debug and profile your RAG pipeline:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip
+from flip.utils.logger import setup_logging
+from flip.utils.debug import FlipDebugger, profile_query
+
+# Setup logging
+logger = setup_logging(level="DEBUG", log_file="./logs/flip.log")
+
+# Setup debugging
+debugger = FlipDebugger(enabled=True)
+
+# Initialize Flip
+flip = Flip(directory="./docs")
+
+# Profile a query
+profile_query(flip, "What is AI?", iterations=10)
+
+# Check timings
+debugger.print_timings()</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Local Models -->
+            <section class="section">
+                <h2 class="section-title">9. Local Models (No API Keys)</h2>
+                <p>Use Ollama and Sentence Transformers for completely local RAG:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">from flip import Flip, FlipConfig
+
+config = FlipConfig(
+    llm_provider="ollama",
+    llm_model="llama2",
+    
+    embedding_provider="sentence-transformers",
+    embedding_model="all-MiniLM-L6-v2",
+    
+    use_hybrid_search=True
+)
+
+flip = Flip(directory="./docs", config=config)
+response = flip.query("What is this about?")</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Next Steps -->
+            <section class="section">
+                <h2 class="section-title">Next Steps</h2>
+                <p>Explore more:</p>
+                <ul>
+                    <li><a href="index.html#api">API Reference</a> - Complete API documentation</li>
+                    <li><a href="advanced.html">Advanced Features</a> - Debugging, testing, and more</li>
+                    <li><a href="troubleshooting.html">Troubleshooting</a> - Common issues and solutions</li>
+                    <li><a href="https://github.com/Aditya148/Flip/tree/master/examples" target="_blank">GitHub
+                            Examples</a> - More examples on GitHub</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Flip SDK</h4>
+                    <p>Fully Automated RAG SDK</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://github.com/Aditya148/Flip" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/Aditya148/Flip/issues" target="_blank">Issues</a></li>
+                        <li><a href="index.html">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/Aditya148/Flip/discussions" target="_blank">Discussions</a></li>
+                        <li><a href="https://github.com/Aditya148/Flip/blob/master/CONTRIBUTING.md"
+                                target="_blank">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Flip SDK. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

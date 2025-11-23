@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Flip RAG SDK Installation Guide - Complete installation instructions for all platforms and use cases.">
+    <title>Installation Guide - Flip SDK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Flip SDK</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="installation.html" class="nav-link active">Installation</a>
+                <a href="advanced.html" class="nav-link">Advanced</a>
+                <a href="examples.html" class="nav-link">Examples</a>
+                <a href="troubleshooting.html" class="nav-link">Help</a>
+                <a href="https://github.com/Aditya148/Flip" class="nav-link github-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" style="margin-left: 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+            <!-- Page Header -->
+            <div class="hero-content" style="text-align: center; margin-bottom: 3rem;">
+                <h1 class="section-title" style="font-size: 3rem; margin-bottom: 1rem;">
+                    📦 Installation Guide
+                </h1>
+                <p class="section-description" style="font-size: 1.25rem; color: var(--text-secondary);">
+                    Complete installation instructions for all platforms and use cases
+                </p>
+            </div>
+
+            <!-- Quick Install -->
+            <section class="section">
+                <h2 class="section-title">Quick Install</h2>
+                <p>Install Flip SDK with all core dependencies:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash">pip install flip-rag</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <p>This installs everything you need to get started with OpenAI, Anthropic, or Google providers.</p>
+            </section>
+
+            <!-- Development Install -->
+            <section class="section">
+                <h2 class="section-title">Development Install</h2>
+                <p>For development with testing and linting tools:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash">pip install -r requirements.txt
+pip install -r requirements-dev.txt</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Optional Vector Stores -->
+            <section class="section">
+                <h2 class="section-title">Optional Vector Stores</h2>
+                <p>Install additional vector store providers:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash"># Install all optional dependencies
+pip install -r requirements-optional.txt
+
+# Or install specific providers
+pip install pinecone-client  # For Pinecone
+pip install qdrant-client    # For Qdrant
+pip install weaviate-client  # For Weaviate</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Editable Install -->
+            <section class="section">
+                <h2 class="section-title">Editable Install</h2>
+                <p>For development, install Flip in editable mode:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash">pip install -e .</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <p>This uses the dependencies defined in <code>pyproject.toml</code>.</p>
+            </section>
+
+            <!-- Minimal Install -->
+            <section class="section">
+                <h2 class="section-title">Minimal Install (Local Models Only)</h2>
+                <p>For a minimal installation without API dependencies:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash"># Core dependencies
+pip install pydantic tenacity tqdm python-dotenv
+
+# Vector store
+pip install chromadb
+
+# Document processing
+pip install pypdf2 pdfplumber python-docx beautifulsoup4 lxml markdown
+
+# Local embeddings and LLM
+pip install sentence-transformers transformers torch
+
+# Retrieval
+pip install rank-bm25 tiktoken numpy
+
+# Utilities
+pip install requests</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section class="section">
+                <h2 class="section-title">Troubleshooting</h2>
+
+                <div class="subsection">
+                    <h3>PyTorch Installation</h3>
+                    <p>If you have issues with PyTorch, install it separately first:</p>
+                    <div class="code-block">
+                        <pre><code class="language-bash"># CPU version
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# GPU version (CUDA 11.8)
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+
+# Then install the rest
+pip install -r requirements.txt</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>ChromaDB Issues</h3>
+                    <p>If ChromaDB installation fails, try:</p>
+                    <div class="code-block">
+                        <pre><code class="language-bash">pip install --upgrade pip setuptools wheel
+pip install chromadb</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Windows-Specific</h3>
+                    <p>On Windows, you may need to install Visual C++ Build Tools for some packages.</p>
+                </div>
+            </section>
+
+            <!-- Verify Installation -->
+            <section class="section">
+                <h2 class="section-title">Verify Installation</h2>
+                <p>Test that everything is installed correctly:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash">python -c "from flip import Flip; print('Flip SDK installed successfully!')"</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <p>Or run the quick test:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash">python tests/quick_test.py</code></pre>
+                    <button class="copy-btn">Copy</button>
+                </div>
+            </section>
+
+            <!-- Version Information -->
+            <section class="section">
+                <h2 class="section-title">Version Information</h2>
+                <ul>
+                    <li><strong>Python:</strong> 3.9+</li>
+                    <li><strong>Tested on:</strong> Python 3.9, 3.10, 3.11, 3.12</li>
+                    <li><strong>OS:</strong> Windows, macOS, Linux</li>
+                </ul>
+            </section>
+
+            <!-- Next Steps -->
+            <section class="section">
+                <h2 class="section-title">Next Steps</h2>
+                <p>Now that you have Flip installed, check out:</p>
+                <ul>
+                    <li><a href="index.html#quick-start">Quick Start Guide</a> - Get started in 5 minutes</li>
+                    <li><a href="examples.html">Examples</a> - See Flip in action</li>
+                    <li><a href="troubleshooting.html">Troubleshooting</a> - Common issues and solutions</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Flip SDK</h4>
+                    <p>Fully Automated RAG SDK</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://github.com/Aditya148/Flip" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/Aditya148/Flip/issues" target="_blank">Issues</a></li>
+                        <li><a href="index.html">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/Aditya148/Flip/discussions" target="_blank">Discussions</a></li>
+                        <li><a href="https://github.com/Aditya148/Flip/blob/master/CONTRIBUTING.md"
+                                target="_blank">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Flip SDK. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
