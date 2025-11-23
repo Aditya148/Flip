@@ -1,0 +1,17 @@
+# Flip RAG SDK - Optional Vector Store Requirements
+# Install these if you want to use additional vector stores
+
+# Pinecone
+pinecone-client>=3.0.0
+
+# Qdrant
+qdrant-client>=1.7.0
+
+# Weaviate
+weaviate-client>=4.4.0
+
+# FAISS (CPU version)
+faiss-cpu>=1.7.4
+
+# FAISS (GPU version - uncomment if you have CUDA)
+# faiss-gpu>=1.7.4
