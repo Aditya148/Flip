@@ -30,3 +30,4 @@ global-exclude dist
 global-exclude .tox
 global-exclude .pytest_cache
 global-exclude .mypy_cache
+global-exclude docs
