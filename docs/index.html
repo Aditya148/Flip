@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flip RAG SDK - Fully Automated Retrieval-Augmented Generation. The simplest yet most powerful RAG SDK.">
+    <title>Flip SDK - Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Flip SDK</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#quick-start" class="nav-link">Quick Start</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#api" class="nav-link">API</a>
+                <a href="#examples" class="nav-link">Examples</a>
+                <a href="https://github.com/Aditya148/Flip" class="nav-link github-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Table of Contents Sidebar -->
+    <aside class="toc-sidebar">
+        <div class="toc-content">
+            <h3>Table of Contents</h3>
+            <ul class="toc-list">
+                <li><a href="#home" class="toc-link">Home</a></li>
+                <li><a href="#quick-start" class="toc-link">Quick Start</a>
+                    <ul>
+                        <li><a href="#installation" class="toc-link">Installation</a></li>
+                        <li><a href="#basic-usage" class="toc-link">Basic Usage</a></li>
+                    </ul>
+                </li>
+                <li><a href="#features" class="toc-link">Features</a></li>
+                <li><a href="#providers" class="toc-link">LLM Providers</a></li>
+                <li><a href="#api" class="toc-link">API Reference</a>
+                    <ul>
+                        <li><a href="#flip-class" class="toc-link">Flip Class</a></li>
+                        <li><a href="#flip-response" class="toc-link">FlipResponse</a></li>
+                        <li><a href="#flip-config" class="toc-link">FlipConfig</a></li>
+                    </ul>
+                </li>
+                <li><a href="#advanced" class="toc-link">Advanced Features</a>
+                    <ul>
+                        <li><a href="#hybrid-search" class="toc-link">Hybrid Search</a></li>
+                        <li><a href="#reranking" class="toc-link">Re-ranking</a></li>
+                        <li><a href="#caching" class="toc-link">Caching</a></li>
+                        <li><a href="#incremental" class="toc-link">Incremental Updates</a></li>
+                    </ul>
+                </li>
+                <li><a href="#examples" class="toc-link">Examples</a></li>
+                <li><a href="#configuration" class="toc-link">Configuration</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">Fully Automated RAG SDK</div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Flip</span> RAG SDK
+                </h1>
+                <p class="hero-subtitle">
+                    The simplest yet most powerful RAG SDK.<br>
+                    Initialize with a directory and start querying - that's it!
+                </p>
+                <div class="hero-buttons">
+                    <a href="#quick-start" class="btn btn-primary">Get Started</a>
+                    <a href="https://github.com/Aditya148/Flip" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                </div>
+                <div class="hero-code">
+                    <pre><code class="language-python">from flip import Flip
+
+# Initialize with a directory - that's it!
+flip = Flip(directory="./docs")
+
+# Query your documents
+response = flip.query("What is the main topic?")
+print(response.answer)</code></pre>
+                    <button class="copy-btn" data-target="hero-code">Copy</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Start Section -->
+        <section id="quick-start" class="section">
+            <div class="container">
+                <h2 class="section-title">🚀 Quick Start</h2>
+                
+                <div id="installation" class="subsection">
+                    <h3>Installation</h3>
+                    <p>Install Flip SDK using pip:</p>
+                    <div class="code-block">
+                        <pre><code class="language-bash">pip install flip-rag</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+
+                <div id="basic-usage" class="subsection">
+                    <h3>Basic Usage</h3>
+                    <p>Get started with Flip in just a few lines of code:</p>
+                    <div class="code-block">
+                        <pre><code class="language-python">from flip import Flip
+
+# Initialize with a directory
+flip = Flip(directory="./docs")
+
+# Query your documents
+response = flip.query("What is the main topic?")
+
+# Access the results
+print(response.answer)
+print(response.citations)</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">✨ Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Ultra-Simple API</h3>
+                        <p>Just <code>Flip(directory="./docs")</code> to get started. No complex configuration needed.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Fully Automated</h3>
+                        <p>Handles everything from document loading to response generation automatically.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>Multiple LLM Providers</h3>
+                        <p>OpenAI, Azure OpenAI, Anthropic, Google, HuggingFace, Meta, Ollama</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Smart Chunking</h3>
+                        <p>Token, sentence, semantic, and recursive chunking strategies</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Hybrid Search</h3>
+                        <p>Vector + keyword search with reciprocal rank fusion for better accuracy</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>Persistent Storage</h3>
+                        <p>ChromaDB for zero-config vector storage with disk persistence</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Rich File Support</h3>
+                        <p>PDF, DOCX, TXT, MD, JSON, CSV, HTML, and code files</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Extensible</h3>
+                        <p>Easy to add custom providers and strategies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LLM Providers Section -->
+        <section id="providers" class="section">
+            <div class="container">
+                <h2 class="section-title">📚 Supported LLM Providers</h2>
+                <p class="section-description">Choose from multiple LLM providers with a simple parameter change:</p>
+                
+                <div class="provider-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="openai">OpenAI</button>
+                        <button class="tab-btn" data-tab="azure">Azure OpenAI</button>
+                        <button class="tab-btn" data-tab="anthropic">Anthropic</button>
+                        <button class="tab-btn" data-tab="google">Google</button>
+                        <button class="tab-btn" data-tab="huggingface">HuggingFace</button>
+                        <button class="tab-btn" data-tab="ollama">Ollama</button>
+                    </div>
+                    
+                    <div class="tab-content active" data-tab="openai">
+                        <div class="code-block">
+                            <pre><code class="language-python"># Use OpenAI (default)
+flip = Flip(directory="./docs", llm_provider="openai")
+
+# Environment variable: OPENAI_API_KEY</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab="azure">
+                        <div class="code-block">
+                            <pre><code class="language-python">from flip import Flip, FlipConfig
+
+config = FlipConfig(
+    llm_provider="azure-openai",
+    llm_model="gpt-4",  # Your deployment name
+    embedding_provider="azure-openai",
+    embedding_model="text-embedding-ada-002",
+    azure_openai_api_key="your-key",
+    azure_openai_endpoint="https://your-resource.openai.azure.com/"
+)
+
+flip = Flip(directory="./docs", config=config)</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab="anthropic">
+                        <div class="code-block">
+                            <pre><code class="language-python"># Use Anthropic Claude
+flip = Flip(directory="./docs", llm_provider="anthropic")
+
+# Environment variable: ANTHROPIC_API_KEY</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab="google">
+                        <div class="code-block">
+                            <pre><code class="language-python"># Use Google Gemini
+flip = Flip(directory="./docs", llm_provider="google")
+
+# Environment variable: GOOGLE_API_KEY</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab="huggingface">
+                        <div class="code-block">
+                            <pre><code class="language-python"># Use HuggingFace models
+flip = Flip(directory="./docs", llm_provider="huggingface")
+
+# Environment variable: HUGGINGFACE_API_KEY</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab="ollama">
+                        <div class="code-block">
+                            <pre><code class="language-python"># Use local Ollama
+flip = Flip(directory="./docs", llm_provider="ollama")
+
+# No API key needed - runs locally!</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Reference Section -->
+        <section id="api" class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">🔧 API Reference</h2>
+                
+                <div id="flip-class" class="api-section">
+                    <h3>Flip Class</h3>
+                    <p>The main SDK class for RAG operations.</p>
+                    
+                    <div class="code-block">
+                        <pre><code class="language-python">flip = Flip(
+    directory: Optional[str] = None,
+    config: Optional[FlipConfig] = None,
+    llm_provider: Optional[str] = None,
+    llm_model: Optional[str] = None,
+    **kwargs
+)</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                    
+                    <h4>Methods</h4>
+                    <div class="method-list">
+                        <div class="method-item">
+                            <code class="method-signature">query(question: str) → FlipResponse</code>
+                            <p>Query your documents and get an AI-generated answer.</p>
+                        </div>
+                        <div class="method-item">
+                            <code class="method-signature">index_directory(directory: str)</code>
+                            <p>Index all documents in a directory.</p>
+                        </div>
+                        <div class="method-item">
+                            <code class="method-signature">add_documents(file_paths: List[str])</code>
+                            <p>Add specific files to the index.</p>
+                        </div>
+                        <div class="method-item">
+                            <code class="method-signature">refresh_index()</code>
+                            <p>Incrementally update index with changed documents.</p>
+                        </div>
+                        <div class="method-item">
+                            <code class="method-signature">evaluate(query, relevant_ids, k=5)</code>
+                            <p>Evaluate RAG performance with metrics.</p>
+                        </div>
+                        <div class="method-item">
+                            <code class="method-signature">get_monitoring_stats()</code>
+                            <p>Get performance statistics.</p>
+                        </div>
+                        <div class="method-item">
+                            <code class="method-signature">clear()</code>
+                            <p>Clear all indexed documents.</p>
+                        </div>
+                        <div class="method-item">
+                            <code class="method-signature">get_stats()</code>
+                            <p>Get indexing statistics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="flip-response" class="api-section">
+                    <h3>FlipResponse</h3>
+                    <p>Response object returned by query operations.</p>
+                    
+                    <div class="code-block">
+                        <pre><code class="language-python">@dataclass
+class FlipResponse:
+    answer: str              # Generated answer
+    citations: List[Dict]    # Source citations
+    context_chunks: List[str] # Retrieved chunks
+    metadata: Dict[str, Any] # Additional metadata</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+
+                <div id="flip-config" class="api-section">
+                    <h3>FlipConfig</h3>
+                    <p>Configuration object for customizing Flip behavior.</p>
+                    
+                    <div class="code-block">
+                        <pre><code class="language-python">from flip import FlipConfig
+
+config = FlipConfig(
+    # LLM Configuration
+    llm_provider="openai",
+    llm_model="gpt-4-turbo-preview",
+    llm_temperature=0.7,
+    llm_max_tokens=1024,
+    
+    # Embedding Configuration
+    embedding_provider="openai",
+    embedding_model="text-embedding-3-small",
+    
+    # Vector Store
+    vector_store="chroma",
+    vector_store_path="./flip_data",
+    
+    # Chunking
+    chunking_strategy="semantic",  # token, sentence, semantic, recursive
+    chunk_size=512,
+    chunk_overlap=50,
+    
+    # Retrieval
+    retrieval_top_k=5,
+    use_hybrid_search=True,
+    use_reranking=True,
+    
+    # Cache
+    enable_cache=True,
+    cache_dir="./flip_cache"
+)</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Features Section -->
+        <section id="advanced" class="section">
+            <div class="container">
+                <h2 class="section-title">🚀 Advanced Features</h2>
+                
+                <div id="hybrid-search" class="subsection">
+                    <h3>🔀 Hybrid Search</h3>
+                    <p>Combines vector similarity search with BM25 keyword search using reciprocal rank fusion for superior accuracy.</p>
+                    
+                    <div class="feature-details">
+                        <h4>How It Works</h4>
+                        <ul>
+                            <li><strong>Vector Search:</strong> Semantic similarity using embeddings</li>
+                            <li><strong>Keyword Search:</strong> BM25 algorithm for exact matches</li>
+                            <li><strong>Fusion:</strong> Reciprocal Rank Fusion combines both results</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-block">
+                        <pre><code class="language-python">from flip import Flip, FlipConfig
+
+config = FlipConfig(
+    use_hybrid_search=True  # Enabled by default
+)
+
+flip = Flip(directory="./docs", config=config)</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+
+                <div id="reranking" class="subsection">
+                    <h3>📊 Re-ranking</h3>
+                    <p>Uses cross-encoder models to re-rank retrieved documents for improved relevance.</p>
+                    
+                    <div class="code-block">
+                        <pre><code class="language-python">config = FlipConfig(
+    use_reranking=True,  # Enabled by default
+    reranker_model="cross-encoder/ms-marco-MiniLM-L-6-v2"
+)
+
+flip = Flip(directory="./docs", config=config)</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+
+                <div id="caching" class="subsection">
+                    <h3>💾 Intelligent Caching</h3>
+                    <p>LRU caching for embeddings and queries with disk persistence for faster repeated operations.</p>
+                    
+                    <div class="feature-details">
+                        <h4>Cache Types</h4>
+                        <ul>
+                            <li><strong>Embedding Cache:</strong> Caches document embeddings</li>
+                            <li><strong>Query Cache:</strong> Caches query results</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-block">
+                        <pre><code class="language-python">config = FlipConfig(
+    enable_cache=True,  # Enabled by default
+    cache_dir="./flip_cache"
+)
+
+flip = Flip(directory="./docs", config=config)
+
+# Manually save caches
+flip.pipeline.save_caches()
+
+# Clear caches
+flip.pipeline.clear_caches()</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+
+                <div id="incremental" class="subsection">
+                    <h3>🔄 Incremental Updates</h3>
+                    <p>Efficiently track and update only changed documents instead of re-indexing everything.</p>
+                    
+                    <div class="code-block">
+                        <pre><code class="language-python">flip = Flip(directory="./docs")
+
+# Later, refresh with only changed documents
+stats = flip.refresh_index()
+
+print(f"Added: {stats['added']}")
+print(f"Updated: {stats['updated']}")
+print(f"Deleted: {stats['deleted']}")</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">🌟 Examples</h2>
+                
+                <div class="example-grid">
+                    <div class="example-card">
+                        <h3>Simple Q&A</h3>
+                        <div class="code-block">
+                            <pre><code class="language-python">from flip import Flip
+
+flip = Flip(directory="./company_docs")
+response = flip.query("What is our refund policy?")
+
+print(f"Answer: {response.answer}")
+print(f"Sources: {len(response.citations)} documents")</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h3>Multiple Providers</h3>
+                        <div class="code-block">
+                            <pre><code class="language-python">from flip import Flip
+
+providers = ["openai", "anthropic", "google"]
+
+for provider in providers:
+    flip = Flip(directory="./docs", llm_provider=provider)
+    response = flip.query("Summarize the main points")
+    print(f"{provider}: {response.answer[:100]}...")</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h3>Advanced Configuration</h3>
+                        <div class="code-block">
+                            <pre><code class="language-python">from flip import Flip, FlipConfig
+
+config = FlipConfig(
+    llm_provider="openai",
+    llm_model="gpt-4-turbo-preview",
+    embedding_provider="openai",
+    chunking_strategy="semantic",
+    chunk_size=512,
+    retrieval_top_k=5,
+    use_hybrid_search=True,
+    use_reranking=True
+)
+
+flip = Flip(directory="./docs", config=config)
+response = flip.query("What are the key features?")</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h3>Evaluation</h3>
+                        <div class="code-block">
+                            <pre><code class="language-python">from flip import Flip
+
+flip = Flip(directory="./docs")
+
+# Evaluate a query
+result = flip.evaluate(
+    query="What is AI?",
+    relevant_doc_ids=["chunk_1", "chunk_2"],
+    k=5
+)
+
+print(f"Precision: {result.retrieval_precision:.3f}")
+print(f"Overall Score: {result.overall_score:.3f}")</code></pre>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Section -->
+        <section id="configuration" class="section">
+            <div class="container">
+                <h2 class="section-title">⚙️ Complete Configuration</h2>
+                <p class="section-description">All available configuration options:</p>
+                
+                <div class="config-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>llm_provider</code></td>
+                                <td>str</td>
+                                <td>"openai"</td>
+                                <td>LLM provider to use</td>
+                            </tr>
+                            <tr>
+                                <td><code>llm_model</code></td>
+                                <td>str</td>
+                                <td>None</td>
+                                <td>Specific model name</td>
+                            </tr>
+                            <tr>
+                                <td><code>llm_temperature</code></td>
+                                <td>float</td>
+                                <td>0.7</td>
+                                <td>Temperature for generation</td>
+                            </tr>
+                            <tr>
+                                <td><code>llm_max_tokens</code></td>
+                                <td>int</td>
+                                <td>1024</td>
+                                <td>Maximum tokens to generate</td>
+                            </tr>
+                            <tr>
+                                <td><code>embedding_provider</code></td>
+                                <td>str</td>
+                                <td>"openai"</td>
+                                <td>Embedding provider to use</td>
+                            </tr>
+                            <tr>
+                                <td><code>embedding_model</code></td>
+                                <td>str</td>
+                                <td>None</td>
+                                <td>Specific embedding model</td>
+                            </tr>
+                            <tr>
+                                <td><code>vector_store</code></td>
+                                <td>str</td>
+                                <td>"chroma"</td>
+                                <td>Vector store to use</td>
+                            </tr>
+                            <tr>
+                                <td><code>vector_store_path</code></td>
+                                <td>Path</td>
+                                <td>"./flip_data"</td>
+                                <td>Path for local vector store</td>
+                            </tr>
+                            <tr>
+                                <td><code>chunking_strategy</code></td>
+                                <td>str</td>
+                                <td>"semantic"</td>
+                                <td>Chunking strategy</td>
+                            </tr>
+                            <tr>
+                                <td><code>chunk_size</code></td>
+                                <td>int</td>
+                                <td>512</td>
+                                <td>Target chunk size in tokens</td>
+                            </tr>
+                            <tr>
+                                <td><code>chunk_overlap</code></td>
+                                <td>int</td>
+                                <td>50</td>
+                                <td>Overlap between chunks</td>
+                            </tr>
+                            <tr>
+                                <td><code>retrieval_top_k</code></td>
+                                <td>int</td>
+                                <td>5</td>
+                                <td>Number of chunks to retrieve</td>
+                            </tr>
+                            <tr>
+                                <td><code>use_hybrid_search</code></td>
+                                <td>bool</td>
+                                <td>True</td>
+                                <td>Use hybrid search</td>
+                            </tr>
+                            <tr>
+                                <td><code>use_reranking</code></td>
+                                <td>bool</td>
+                                <td>True</td>
+                                <td>Use reranking</td>
+                            </tr>
+                            <tr>
+                                <td><code>enable_cache</code></td>
+                                <td>bool</td>
+                                <td>True</td>
+                                <td>Enable caching</td>
+                            </tr>
+                            <tr>
+                                <td><code>cache_dir</code></td>
+                                <td>Path</td>
+                                <td>"./flip_cache"</td>
+                                <td>Cache directory</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>Flip SDK</h4>
+                        <p>Fully Automated RAG SDK</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Links</h4>
+                        <ul>
+                            <li><a href="https://github.com/Aditya148/Flip" target="_blank">GitHub</a></li>
+                            <li><a href="https://github.com/Aditya148/Flip/issues" target="_blank">Issues</a></li>
+                            <li><a href="#quick-start">Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="https://github.com/Aditya148/Flip/discussions" target="_blank">Discussions</a></li>
+                            <li><a href="https://github.com/Aditya148/Flip/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Flip SDK. Licensed under MIT.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
