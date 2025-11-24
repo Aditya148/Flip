@@ -31,6 +31,7 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#api" class="nav-link">API</a>
                 <a href="#examples" class="nav-link">Examples</a>
+                <a href="vector-databases.html" class="nav-link">Vector DBs</a>
                 <a href="https://github.com/Aditya148/Flip" class="nav-link github-link" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path
@@ -66,6 +67,7 @@
                         <li><a href="#flip-class" class="toc-link">Flip Class</a></li>
                         <li><a href="#flip-response" class="toc-link">FlipResponse</a></li>
                         <li><a href="#flip-config" class="toc-link">FlipConfig</a></li>
+                        <li><a href="#vector-databases" class="toc-link">Vector Databases</a></li>
                     </ul>
                 </li>
                 <li><a href="#advanced" class="toc-link">Advanced Features</a>
@@ -176,25 +178,72 @@ print(response.citations)</code></pre>
                         <p>Token, sentence, semantic, and recursive chunking strategies</p>
                     </div>
                     <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Extensible</h3>
+                        <p>Easy to add custom providers and strategies</p>
+                    </div>
+                    <div class="feature-card">
                         <div class="feature-icon">🔍</div>
                         <h3>Hybrid Search</h3>
                         <p>Vector + keyword search with reciprocal rank fusion for better accuracy</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">💾</div>
-                        <h3>Persistent Storage</h3>
-                        <p>ChromaDB for zero-config vector storage with disk persistence</p>
+                        <h3>9 Vector Databases</h3>
+                        <p>Pinecone, Qdrant, Weaviate, Milvus, FAISS, Pgvector, Redis, Elasticsearch, MongoDB</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vector Databases Section -->
+        <section id="vector-databases" class="section">
+            <div class="container">
+                <h2 class="section-title">💾 9 Supported Vector Databases</h2>
+                <p class="section-description">Choose the right vector database for your use case - from managed cloud
+                    solutions to self-hosted options</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>Pinecone</h4>
+                        <p>Fully managed, production-ready vector database with automatic scaling</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">📝</div>
-                        <h3>Rich File Support</h3>
-                        <p>PDF, DOCX, TXT, MD, JSON, CSV, HTML, and code files</p>
+                        <h4>Qdrant</h4>
+                        <p>Local/cloud flexibility with rich filtering and snapshot support</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🎨</div>
-                        <h3>Extensible</h3>
-                        <p>Easy to add custom providers and strategies</p>
+                        <h4>Weaviate</h4>
+                        <p>GraphQL-based with schema management and hybrid search</p>
                     </div>
+                    <div class="feature-card">
+                        <h4>Milvus</h4>
+                        <p>Enterprise-grade with GPU support for billions of vectors</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>FAISS</h4>
+                        <p>Facebook AI's ultra-fast local library with GPU acceleration</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Pgvector</h4>
+                        <p>PostgreSQL extension with ACID transactions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Redis</h4>
+                        <p>In-memory speed with caching capabilities</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Elasticsearch</h4>
+                        <p>Full-text + vector search with analytics</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>MongoDB</h4>
+                        <p>Document database with flexible schema</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="vector-databases.html" class="btn btn-primary">Compare All Databases →</a>
                 </div>
             </div>
         </section>
