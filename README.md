@@ -11,7 +11,7 @@ Flip is the simplest yet most powerful RAG SDK. Initialize with a directory and 
 - 🤖 **Multiple LLM Providers**: OpenAI, Azure OpenAI, Anthropic, Google, HuggingFace, Meta, Ollama
 - 📊 **Smart Chunking**: Token, sentence, semantic, and recursive strategies
 - 🔍 **Hybrid Search**: Vector + keyword search for better accuracy
-- 💾 **Persistent Storage**: ChromaDB for zero-config vector storage
+- 💾 **9 Vector Databases**: Pinecone, Qdrant, Weaviate, Milvus, FAISS, Pgvector, Redis, Elasticsearch, MongoDB
 - 📝 **Rich File Support**: PDF, DOCX, TXT, MD, JSON, CSV, HTML, code files
 - 🎨 **Extensible**: Easy to add custom providers and strategies
 
@@ -303,6 +303,132 @@ GOOGLE_API_KEY=your-key-here
 HUGGINGFACE_API_KEY=your-key-here
 ```
 
+## 🗄️ Multi-Database Support
+
+Flip supports **9 major vector and NoSQL databases**, giving you complete flexibility to choose the perfect storage backend for your use case:
+
+### Vector Databases
+
+#### Pinecone (Cloud-Native)
+```python
+config = FlipConfig(
+    vector_store="pinecone",
+    pinecone_api_key="your-key",
+    pinecone_environment="gcp-starter",
+    pinecone_index_name="flip-index"
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+#### Qdrant (Local/Cloud)
+```python
+config = FlipConfig(
+    vector_store="qdrant",
+    qdrant_url="http://localhost:6333",  # or cloud URL
+    qdrant_api_key="your-key"  # for cloud
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+#### Weaviate (GraphQL)
+```python
+config = FlipConfig(
+    vector_store="weaviate",
+    weaviate_url="http://localhost:8080",
+    weaviate_api_key="your-key"  # for cloud
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+#### Milvus (Enterprise)
+```python
+config = FlipConfig(
+    vector_store="milvus",
+    milvus_host="localhost",
+    milvus_port=19530
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+#### FAISS (Local, Ultra-Fast)
+```python
+config = FlipConfig(
+    vector_store="faiss",
+    faiss_index_type="HNSW",  # or IVF, Flat
+    persist_directory="./faiss_data"
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+#### Pgvector (PostgreSQL)
+```python
+config = FlipConfig(
+    vector_store="pgvector",
+    pgvector_host="localhost",
+    pgvector_database="flip_db",
+    pgvector_user="postgres",
+    pgvector_password="password"
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+### NoSQL/Hybrid Databases
+
+#### Redis (In-Memory + Cache)
+```python
+config = FlipConfig(
+    vector_store="redis",
+    redis_host="localhost",
+    redis_port=6379
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+#### Elasticsearch (Search Engine)
+```python
+config = FlipConfig(
+    vector_store="elasticsearch",
+    elasticsearch_url="http://localhost:9200",
+    elasticsearch_api_key="your-key"
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+#### MongoDB (Document Store)
+```python
+config = FlipConfig(
+    vector_store="mongodb",
+    mongodb_uri="mongodb://localhost:27017/",
+    mongodb_database="flip_db"
+)
+flip = Flip(directory="./docs", config=config)
+```
+
+### Database Comparison
+
+| Database | Type | Best For | Deployment |
+|----------|------|----------|------------|
+| **Pinecone** | Vector | Production, cloud-native | Cloud |
+| **Qdrant** | Vector | Flexibility, snapshots | Local/Cloud |
+| **Weaviate** | Vector | GraphQL, schema management | Local/Cloud |
+| **Milvus** | Vector | Enterprise, scalability | Local/Cloud |
+| **FAISS** | Vector | Local, speed, GPU support | Local |
+| **Pgvector** | Vector | PostgreSQL users, ACID | Local/Cloud |
+| **Redis** | Hybrid | Caching, real-time | Local/Cloud |
+| **Elasticsearch** | Hybrid | Full-text + vectors | Local/Cloud |
+| **MongoDB** | NoSQL | Metadata-rich storage | Local/Cloud |
+
+### Key Features Across All Databases
+
+- ✅ **Unified API**: Same interface for all databases
+- ✅ **Lazy Loading**: Optional dependencies (install only what you need)
+- ✅ **Health Checks**: Monitor database status
+- ✅ **Batch Operations**: Efficient bulk inserts
+- ✅ **Metadata Filtering**: Filter by custom metadata
+- ✅ **Statistics**: Track vector counts and performance
+
+See individual database examples in the `examples/` directory.
+
 ## 🎯 Design Philosophy
 
 Flip is designed around three core principles:
@@ -337,8 +463,29 @@ Flip is optimized for performance:
 
 - **Batch Processing**: Embeddings generated in batches
 - **Caching**: Automatic caching of embeddings and queries
-- **Efficient Storage**: ChromaDB for fast vector search
+- **Efficient Storage**: Support for 9 optimized vector databases
 - **Incremental Updates**: Only re-index changed documents
+- **Performance Testing**: Built-in benchmarking framework
+
+## 🧪 Testing
+
+Flip includes comprehensive testing infrastructure:
+
+```python
+# Use test fixtures for any database
+from tests.fixtures import all_vector_stores
+
+def test_my_feature(all_vector_stores):
+    # Test runs against all available databases
+    pass
+
+# Benchmark performance
+from tests.performance import PerformanceTester
+
+tester = PerformanceTester(vector_store)
+tester.run_full_benchmark()
+tester.print_results()
+```
 
 ## 🤝 Contributing
 
@@ -352,7 +499,7 @@ MIT License - see LICENSE file for details
 
 Flip builds on the shoulders of giants:
 - OpenAI, Azure OpenAI, Anthropic, Google for LLM APIs
-- ChromaDB for vector storage
+- Pinecone, Qdrant, Weaviate, Milvus, FAISS, Pgvector, Redis, Elasticsearch, MongoDB for vector storage
 - Sentence Transformers for local embeddings
 - And many other open-source projects
 
@@ -365,3 +512,4 @@ Flip builds on the shoulders of giants:
 ---
 
 **Made with ❤️ by the Flip Team**
+

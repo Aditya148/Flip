@@ -5,7 +5,13 @@ from pathlib import Path
 import chromadb
 from chromadb.config import Settings
 
-from flip.vector_store.base import BaseVectorStore, SearchResult
+from flip.vector_store.base import (
+    BaseVectorStore, 
+    SearchResult, 
+    VectorStoreStats,
+    HealthCheckResult,
+    HealthStatus
+)
 from flip.core.exceptions import VectorStoreError
 
 
@@ -98,6 +104,32 @@ class ChromaVectorStore(BaseVectorStore):
         except Exception as e:
             raise VectorStoreError(f"Failed to search ChromaDB: {str(e)}")
     
+    def get_by_ids(
+        self,
+        ids: List[str]
+    ) -> List[SearchResult]:
+        """Retrieve vectors by their IDs from ChromaDB."""
+        try:
+            results = self.collection.get(
+                ids=ids,
+                include=["documents", "metadatas", "embeddings"]
+            )
+            
+            search_results = []
+            if results['ids']:
+                for i in range(len(results['ids'])):
+                    search_results.append(SearchResult(
+                        id=results['ids'][i],
+                        text=results['documents'][i] if results['documents'] else "",
+                        score=1.0,  # No score for direct retrieval
+                        metadata=results['metadatas'][i] if results['metadatas'] else {}
+                    ))
+            
+            return search_results
+            
+        except Exception as e:
+            raise VectorStoreError(f"Failed to get by IDs from ChromaDB: {str(e)}")
+    
     def delete(self, ids: List[str]):
         """Delete vectors from ChromaDB."""
         try:
@@ -141,6 +173,30 @@ class ChromaVectorStore(BaseVectorStore):
             )
         except Exception as e:
             raise VectorStoreError(f"Failed to clear ChromaDB: {str(e)}")
+    
+    def get_stats(self) -> VectorStoreStats:
+        """Get statistics about ChromaDB collection."""
+        try:
+            count = self.count()
+            
+            # Try to get a sample to determine dimension
+            dimension = 0
+            if count > 0:
+                sample = self.collection.get(limit=1, include=["embeddings"])
+                if sample['embeddings'] and len(sample['embeddings']) > 0:
+                    dimension = len(sample['embeddings'][0])
+            
+            return VectorStoreStats(
+                total_vectors=count,
+                dimension=dimension,
+                metadata={
+                    "provider": self.provider_name,
+                    "collection_name": self.collection_name,
+                    "distance_metric": "cosine"
+                }
+            )
+        except Exception as e:
+            raise VectorStoreError(f"Failed to get ChromaDB stats: {str(e)}")
     
     @property
     def provider_name(self) -> str:
