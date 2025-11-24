@@ -243,7 +243,187 @@ print(response.citations)</code></pre>
                 </div>
 
                 <div style="text-align: center; margin-top: 2rem;">
-                    <a href="vector-databases.html" class="btn btn-primary">Compare All Databases →</a>
+                    <button class="btn btn-primary" onclick="toggleDatabaseComparison()" id="compareBtn">
+                        Show Detailed Comparison ↓
+                    </button>
+                </div>
+
+                <!-- Detailed Comparison - Hidden by default -->
+                <div id="databaseComparison" style="display: none; margin-top: 3rem;">
+                    <h3 style="text-align: center; margin-bottom: 2rem;">Detailed Comparison</h3>
+
+                    <!-- Comparison Table -->
+                    <div style="overflow-x: auto; margin: 2rem 0;">
+                        <table
+                            style="width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 12px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(139, 92, 246, 0.1);">
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Feature</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Pinecone</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Qdrant</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Weaviate</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Milvus</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        FAISS</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Pgvector</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Redis</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        Elasticsearch</th>
+                                    <th
+                                        style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); color: var(--primary-color);">
+                                        MongoDB</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td
+                                        style="padding: 1rem; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                                        Type</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Vector DB
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Vector DB
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Vector DB
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Vector DB
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Library
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Extension
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">In-Memory
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Search
+                                        Engine</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Document DB
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="padding: 1rem; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                                        Deployment</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Cloud</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local/Cloud
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local/Cloud
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local/Cloud
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local/Cloud
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local/Cloud
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local/Cloud
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Local/Cloud
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="padding: 1rem; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                                        Managed Service</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="padding: 1rem; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                                        GPU Support</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="padding: 1rem; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                                        Hybrid Search</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">✅</td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">❌</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; font-weight: 500;">Best For</td>
+                                    <td style="padding: 1rem;">Production apps</td>
+                                    <td style="padding: 1rem;">Flexibility</td>
+                                    <td style="padding: 1rem;">GraphQL users</td>
+                                    <td style="padding: 1rem;">Enterprise</td>
+                                    <td style="padding: 1rem;">Max speed</td>
+                                    <td style="padding: 1rem;">PostgreSQL</td>
+                                    <td style="padding: 1rem;">Real-time</td>
+                                    <td style="padding: 1rem;">Full-text search</td>
+                                    <td style="padding: 1rem;">Metadata-rich</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Quick Decision Guide -->
+                    <div style="margin-top: 3rem;">
+                        <h3 style="text-align: center; margin-bottom: 2rem;">Quick Decision Guide</h3>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <h4>🚀 For Production</h4>
+                                <p><strong>Pinecone</strong> - Zero ops, managed<br>
+                                    <strong>Qdrant</strong> - Cost-effective<br>
+                                    <strong>Milvus</strong> - Enterprise scale
+                                </p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>💻 For Development</h4>
+                                <p><strong>FAISS</strong> - Fast, local<br>
+                                    <strong>Qdrant</strong> - Flexible<br>
+                                    <strong>ChromaDB</strong> - Simplest (default)
+                                </p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>🔧 For Existing Infrastructure</h4>
+                                <p><strong>Pgvector</strong> - If using PostgreSQL<br>
+                                    <strong>Redis</strong> - If using Redis<br>
+                                    <strong>Elasticsearch</strong> - If using ES
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="vector-databases.html" class="btn btn-secondary">View Full Comparison Page →</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -779,6 +959,24 @@ print(f"Overall Score: {result.overall_score:.3f}")</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        function toggleDatabaseComparison() {
+            const comparison = document.getElementById('databaseComparison');
+            const btn = document.getElementById('compareBtn');
+
+            if (comparison.style.display === 'none') {
+                comparison.style.display = 'block';
+                btn.textContent = 'Hide Detailed Comparison ↑';
+                // Smooth scroll to the comparison
+                setTimeout(() => {
+                    comparison.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            } else {
+                comparison.style.display = 'none';
+                btn.textContent = 'Show Detailed Comparison ↓';
+            }
+        }
+    </script>
 </body>
 
 </html>
