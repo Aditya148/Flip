@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flip-rag"
-version = "0.1.0"
+version = "0.1.2"
 description = "Fully automated RAG SDK - Initialize with a directory and start querying"
 readme = "README.md"
 requires-python = ">=3.9"

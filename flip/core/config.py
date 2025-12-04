@@ -150,6 +150,20 @@ class FlipConfig(BaseModel):
     mongodb_uri: str = Field(default="mongodb://localhost:27017/", description="MongoDB URI")
     mongodb_database: str = Field(default="flip_db", description="MongoDB database")
     
+    # Image Processing Configuration
+    enable_image_extraction: bool = Field(default=False, description="Enable image extraction from documents")
+    image_embedding_provider: Literal[
+        "huggingface-clip", "sentence-transformers-clip", "openai-clip"
+    ] = Field(default="sentence-transformers-clip", description="Image embedding provider")
+    image_embedding_model: Optional[str] = Field(default=None, description="Image embedding model name")
+    max_image_size: int = Field(default=1024, gt=0, description="Maximum image dimension in pixels")
+    min_image_size: int = Field(default=100, gt=0, description="Minimum image dimension to extract")
+    image_quality: int = Field(default=85, ge=1, le=100, description="JPEG quality for image processing")
+    extract_image_context: bool = Field(default=True, description="Extract surrounding text as context")
+    enable_multimodal_search: bool = Field(default=False, description="Enable multimodal (text+image) search")
+    image_weight: float = Field(default=0.5, ge=0.0, le=1.0, description="Weight for image results in multimodal search")
+    text_weight: float = Field(default=0.5, ge=0.0, le=1.0, description="Weight for text results in multimodal search")
+    
     # Advanced Configuration
     custom_prompt_template: Optional[str] = Field(
         default=None,
